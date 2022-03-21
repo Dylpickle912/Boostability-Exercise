@@ -10,7 +10,6 @@ namespace Boostability_Exercise
 		{
 
 			// declare routes
-			
 			string[] routes =
 			{
 				"/home",
@@ -27,6 +26,7 @@ namespace Boostability_Exercise
 			};
 			*/
 
+			// Declare list of final paths for after corrections
 			List<string> NewPaths = new List<string>();
 
 			string previousPath = "";
@@ -41,7 +41,7 @@ namespace Boostability_Exercise
 				// convert previousRoute to List<string>
 				List<string> PreviousRoute = previousPath.Split(" -> ").ToList();
 
-				// declare newRoute
+				// declare the new path after corrections
 				string newPath = "";
 
 				if (previousPath != "")
