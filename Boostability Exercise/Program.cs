@@ -17,7 +17,15 @@ namespace Boostability_Exercise
 				"/members -> /about"
 			};
 
-
+			foreach (var route in routes)
+			{
+				string[] splitRoute = route.Split(" -> ");
+				foreach (var split in splitRoute)
+				{
+					Console.WriteLine(split);
+				}
+				Console.WriteLine("\n");
+			}
 		}
 	}
 }
