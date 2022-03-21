@@ -20,8 +20,9 @@ namespace Boostability_Exercise
 				"/members -> /about"
 			};
 
+			List<string> NewPaths = new List<string>();
+
 			string previousPath = "";
-			Console.WriteLine(previousPath);
 
 			foreach (var route in routes)
 			{
@@ -34,22 +35,33 @@ namespace Boostability_Exercise
 
 				// convert previousRoute to List<string>
 				List<string> PreviousRoute = previousPath.Split(" -> ").ToList();
+				Console.WriteLine("Previous Route [" + PreviousRoute.Count() + "]: " + String.Join(" ", PreviousRoute));
 
 				// declare newRoute
 				string newPath = "";
 
-				if (previousPath.Count() != 0)
+				if (previousPath != "")
 				{
 					// if first route in the current route is equal to the last route of the previous path
-					if (splitRoute[0] == PreviousRoute[PreviousRoute.Count() - 1])
+					if (splitRoute[0] == PreviousRoute[PreviousRoute.Count() - 1] && splitRoute[splitRoute.Count() - 1] != PreviousRoute[0])
 					{
 						splitRoute.Remove(splitRoute[0]);
-						newPath = string.Join(" -> ", splitRoute);
+						newPath = previousPath + " -> " + string.Join(" -> ", splitRoute);
+
 						Console.WriteLine("New Route: " + newPath);
+
 					} else if (splitRoute[0] == PreviousRoute[PreviousRoute.Count() - 1] && splitRoute[splitRoute.Count() - 1] == PreviousRoute[0])
 					{
 						Console.WriteLine("Circular reference not allowed");
+					} else
+					{
+						newPath = string.Join(" -> ", splitRoute);
+						Console.WriteLine("New Route: " + newPath);
 					}
+				} else
+				{
+					newPath = route;
+					Console.WriteLine("New Route: " + newPath);
 				}
 				
 				foreach (var split in splitRoute)
@@ -58,10 +70,16 @@ namespace Boostability_Exercise
 				}
 				Console.WriteLine("\n");
 
-				previousPath = newPath;
+				NewPaths.Add(newPath);
+
+				previousPath = route;
 			}
 
-			string[] newRoutes = new string[] { };
+			Console.WriteLine("New Paths: \n");
+			foreach (var path in NewPaths)
+			{
+				Console.WriteLine(path + "\n");
+			}
 		}
 	}
 }
