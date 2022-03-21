@@ -36,6 +36,10 @@ namespace Boostability_Exercise
 				Console.WriteLine(route);
 			}
 
+			Console.WriteLine("\nEnter a route, separated by ' -> ':");
+			string inputRoute = Console.ReadLine();
+			Console.WriteLine("\nSubmitted Route: ");
+			Console.WriteLine(inputRoute);
 		}
 	}
 }
