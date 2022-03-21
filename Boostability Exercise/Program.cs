@@ -53,8 +53,13 @@ namespace Boostability_Exercise
 			// Split route based on delimiter
 			string[] routes = inputRoute.Split(" -> ");
 
+			Console.WriteLine("\nAll Routes:\n");
+
 			// Display all routes as array
-			Console.WriteLine(routes);
+			foreach (var route in routes)
+			{
+				Console.WriteLine(route.Trim() + "\n");
+			}
 		}
 	}
 }
